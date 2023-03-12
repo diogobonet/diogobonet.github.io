@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <title>got an Idea💡 | Juntar ideias em um único propósito</title>
+</head>
+<body>
+    <header>
+        <div class="header-main">
+            <img class="logo-header" src="../img/logo.png" alt="Logo Got an Idea">
+            <a href="">Sobre nós</a>
+            <a href="">Nosso projeto</a>
+            <a href="">Comunidade</a>
+            <a href="">Recursos</a>
+            <button id="button-registrar"><strong>Registrar-se</strong></button>
+        </div>
+    </header>
+
+    <main>
+        <div class="div-main">
+
+            <div class="div-esquerda">
+                <h1 class="h1-main">Juntar ideias em um único <br> <span class="span-h1-main"></span></h1>
+                
+                <p class="p-main">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit vel magni cumque ad possimus illum aliquid culpa suscipit officiis corporis voluptas beatae iusto eum repellendus perspiciatis, dignissimos dolorum sit reiciendis.</p>
+                <div class="button-learn-main">
+                    <button class="button-main">Registrar-se</button>
+                    <a href="" class="learn-more">Saiba mais <span class="material-symbols-outlined">arrow_forward_ios</span></a>
+                </div>
+            </div>
+
+            <div class="div-direita">
+                <div class="img-wrapper">
+                    <img class="img-main" src="../img/GB3.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <section>
+            <h1>Sobre nós</h1>
+            
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded',function(event){
+  // array with texts to type in typewriter
+  var dataText = [ "propósito", "lugar", "propósito"];
+  
+  // type one text in the typwriter
+  // keeps calling itself until the text is finished
+  function typeWriter(text, i, fnCallback) {
+    // chekc if text isn't finished yet
+    if (i < (text.length)) {
+      // add next character to h1
+     document.querySelector("span").innerHTML = text.substring(0, i+1) +'<span aria-hidden="true"></span>';
+
+      // wait for a while and call this function again for next character
+      setTimeout(function() {
+        typeWriter(text, i + 1, fnCallback)
+      }, 100);
+    }
+    // text finished, call callback if there is a callback function
+    else if (typeof fnCallback == 'function') {
+      // call callback after timeout
+      setTimeout(fnCallback, 700);
+    }
+  }
+  // start a typewriter animation for a text in the dataText array
+   function StartTextAnimation(i) {
+     if (typeof dataText[i] == 'undefined'){
+        setTimeout(function() {
+          StartTextAnimation(0);
+        }, 20000);
+     }
+     // check if dataText[i] exists
+    if (i < dataText[i].length) {
+      // text exists! start typewriter animation
+     typeWriter(dataText[i], 0, function(){
+       // after callback (and whole text has been animated), start next text
+       StartTextAnimation(i + 1);
+     });
+    }
+  }
+  // start the text animation
+  StartTextAnimation(0);
+});
+    </script>
+</body>
+</html>
